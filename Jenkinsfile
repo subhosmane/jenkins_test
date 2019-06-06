@@ -11,7 +11,7 @@ node('master') {
         build_image.inside {
             
             stage('Test output') {
-                sh "rabbitmqctl status"
+                sh "rabbitmqctl list_users"
             }
         }
       }
