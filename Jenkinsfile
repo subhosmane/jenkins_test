@@ -1,4 +1,4 @@
-node('master') {
+node('master') { 
     checkout scm
     env.WORKSPACE = pwd()
     sh "mkdir -p ${env.WORKSPACE}/_artifacts"
@@ -11,7 +11,7 @@ node('master') {
         build_image.inside {
             
             stage('Test output') {
-                sh "ps -ef"
+                sh "rabbitmqctl status"
             }
         }
       }
