@@ -1,4 +1,4 @@
-node('docker') {
+node('master') {
     checkout scm
     env.WORKSPACE = pwd()
     sh "mkdir -p ${env.WORKSPACE}/_artifacts"
