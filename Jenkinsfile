@@ -1,8 +1,8 @@
 node('master') { 
     checkout scm
     env.WORKSPACE = pwd()
-    sh "mkdir -p ${env.WORKSPACE}/_artifacts"
-    stage('build rabbitmq image') {
+    stages {
+        stage('build rabbitmq image') {
         def build_image = docker.build("rmq:3.0", "-f Dockerfile .")
 
 
@@ -11,8 +11,12 @@ node('master') {
         build_image.inside {
             
             stage('Test output') {
-                sh "rabbitmqctl list_users"
+                sh "ps -ef"
             }
+        }
+        stage('Email') {
+            emailext body: 'Tested', subject: 'Hi', to: 'sh228261@gmail.com'
+        }
         }
       }
     }
