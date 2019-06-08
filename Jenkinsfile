@@ -12,8 +12,6 @@ pipeline {
                 }
             }
             }
-            stage('Email') {
-                emailext body: 'Tested', subject: 'Hi', to: 'sh228261@gmail.com'
-            }
+            
     }                
 }
